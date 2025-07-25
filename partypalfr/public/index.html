@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>PartyPal</title>
   <link rel="stylesheet" href="App.css">
+  <!-- Google Fonts für Party-Vibe -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
   <div id="app">
@@ -12,8 +14,15 @@
     </header>
     <main class="main-content">
       <img alt="Logo" src="./assets/logo.png" class="logo">
-      <h1>Welcome at PartyPal</h1>
+      <h1 class="party-title">
+        Welcome to PartyPal
+        <span class="icon">🎉</span>
+      </h1>
+      <p class="subtitle">
+        Lass den Abend beginnen! <span class="icon">🍻</span><span class="icon">🎶</span>
+      </p>
       <button class="start-btn">Beginne den Abend</button>
+      <div id="confetti-container"></div>
     </main>
   </div>
   <script src="./src/main.js"></script>

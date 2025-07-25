@@ -1,0 +1,173 @@
+body {
+  background: linear-gradient(120deg, #ff5f6d 0%, #ffc371 50%, #43cea2 100%);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-size: 1.15rem; /* etwas größer */
+}
+
+#disco-bg {
+  position: fixed;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.disco-light {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.45;
+  filter: blur(16px);
+  mix-blend-mode: lighten;
+  animation: disco-move 8s linear infinite alternate;
+}
+
+@keyframes disco-move {
+  0% { transform: translateY(0) scale(1);}
+  100% { transform: translateY(60vh) scale(1.2);}
+}
+
+#app {
+  position: relative;
+  z-index: 1;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 400; /* weniger dick */
+  text-align: center;
+  color: #fff;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 30px 40px 0 0;
+}
+
+.login-btn {
+  background: #fff;
+  color: #ff5f6d;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 28px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(255,95,109,0.15);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.login-btn:hover {
+  background: #ff5f6d;
+  color: #fff;
+  transform: scale(1.08) rotate(-2deg);
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.logo {
+  width: 120px;
+  margin-bottom: 30px;
+  filter: drop-shadow(0 4px 16px rgba(255,95,109,0.2));
+  animation: logo-pop 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+}
+@keyframes logo-pop {
+  0% { transform: scale(0.7) rotate(-10deg);}
+  70% { transform: scale(1.1) rotate(8deg);}
+  100% { transform: scale(1) rotate(0);}
+}
+
+.party-title {
+  font-family: 'Montserrat', Arial, sans-serif; /* kein Pacifico mehr */
+  font-size: 2.8rem; /* größer */
+  font-weight: 500;  /* mittlere Dicke */
+  margin-bottom: 10px;
+  text-shadow: 0 2px 16px #ff5f6d99, 0 0px 4px #fff;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.subtitle {
+  font-size: 1.3rem; /* größer */
+  font-weight: 400;
+  margin-bottom: 30px;
+  color: #fffbe7;
+  text-shadow: 0 1px 8px #ff996699;
+}
+
+.icon {
+  font-size: 1.5em;
+  vertical-align: middle;
+  margin: 0 2px;
+  filter: drop-shadow(0 2px 4px #fff3);
+}
+
+.start-btn {
+  margin-top: 20px;
+  background: linear-gradient(90deg, #ff9966 0%, #ff5e62 100%);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 18px 48px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(255,94,98,0.18);
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+.start-btn:hover {
+  background: linear-gradient(90deg, #ff5e62 0%, #ff9966 100%);
+  transform: scale(1.07) rotate(2deg);
+  box-shadow: 0 8px 32px rgba(255,94,98,0.28);
+}
+
+/* Konfetti-Styles */
+#confetti-container {
+  pointer-events: none;
+  position: fixed;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  z-index: 9999;
+  overflow: hidden;
+}
+.confetti {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: confetti-fall 1.5s linear forwards;
+}
+@keyframes confetti-fall {
+  to {
+    transform: translateY(100vh) rotateZ(360deg);
+    opacity: 0.5;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .main-content {
+    margin-top: 30px;
+  }
+  .party-title {
+    font-size: 1.5rem;
+  }
+  .logo {
+    width: 80px;
+  }
+  .start-btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+}
