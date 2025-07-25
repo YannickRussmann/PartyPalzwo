@@ -1,44 +1,45 @@
 document.querySelector('.start-btn').addEventListener('click', function() {
   // Startseiten-Inhalte entfernen
   document.querySelector('.main-content').innerHTML = '';
-  document.querySelector('.login-btn').style.display = 'none';
-  // Login-Overlay anzeigen
   document.getElementById('login-overlay').style.display = 'flex';
-});
 
-// Overlay-Login öffnen/schließen
-document.getElementById('open-login').addEventListener('click', function() {
-  document.getElementById('login-overlay').style.display = 'flex';
-});
-document.getElementById('close-login').addEventListener('click', function() {
-  document.getElementById('login-overlay').style.display = 'none';
-});
-
-// Login-Formular abfangen
-document.getElementById('login-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const username = this.username.value;
-  const password = this.password.value;
-  if (username === "party" && password === "1234") {
-    showPartyApp(username);
+  // Event-Listener für Login-Formular und Close-Button jetzt neu binden!
+  document.getElementById('close-login').onclick = function() {
     document.getElementById('login-overlay').style.display = 'none';
-  } else {
-    alert("Falscher Benutzername oder Passwort!");
-  }
+  };
+  document.getElementById('login-form').onsubmit = function(e) {
+    e.preventDefault();
+    const username = this.username.value;
+    const password = this.password.value;
+    if (username && password) {
+      showPartyApp(username);
+      document.getElementById('login-overlay').style.display = 'none';
+    } else {
+      alert("Falscher Benutzername oder Passwort!");
+    }
+  };
 });
 
+// Die Party-App nach Login
 function showPartyApp(username) {
   document.body.innerHTML = `
     <div id="disco-bg"></div>
     <div id="party-app">
-      <header class="header">
-        <button class="profile-btn" id="profile-btn">👤 Profil</button>
-        <button class="friends-btn" id="friends-btn">👥 Freunde</button>
-        <button class="ranking-btn" id="ranking-btn">👑 Ranking</button>
-        <button class="uber-btn" id="uber-btn">🚗 Uber rufen</button>
-      </header>
+      <nav class="party-banner">
+        <button class="banner-btn friends-btn" id="friends-btn">👥 Freunde</button>
+        <button class="banner-btn ranking-btn" id="ranking-btn">👑 Ranking</button>
+        <button class="banner-btn uber-btn" id="uber-btn">🚗 Uber rufen</button>
+        <button class="banner-btn games-btn" id="games-btn">🎲 Partyspiele</button>
+        <button class="banner-btn badges-btn" id="badges-btn">🏅 Abzeichen</button>
+        <button class="banner-btn profile-btn" id="profile-btn">👤 Profil</button>
+      </nav>
+      <div class="welcome-banner">
+        <h1 class="welcome-title">
+          Willkommen, <span id="user-name">${username}</span>!
+          <span class="icon">🎉</span><span class="icon">🍾</span><span class="icon">🥳</span>
+        </h1>
+      </div>
       <main class="party-main">
-        <h1 class="welcome-title">Willkommen, <span id="user-name">${username}</span>!</h1>
         <section class="profile-section" id="profile-section">
           <h2>Dein Profil</h2>
           <input type="text" id="drink-input" placeholder="Neuen Drink eintragen">
@@ -136,6 +137,7 @@ function showPartyApp(username) {
   };
 }
 
+// Discolichter (wie gehabt)
 window.createDiscoLights = function() {
   const colors = [
     'rgba(0,242,254,0.7)',   // Türkis
@@ -161,5 +163,4 @@ window.createDiscoLights = function() {
   }
 };
 
-document.querySelector('.login-btn').style.display = 'none';
 
