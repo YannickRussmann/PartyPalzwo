@@ -53,16 +53,7 @@ function showPartyApp(username) {
           <h2>Party-Feed</h2>
           <div id="feed-list"></div>
         </section>
-        <section class="party-games" id="party-games">
-          <h2>Partyspiele</h2>
-          <button class="game-btn">🍻 Trinkroulette</button>
-          <button class="game-btn">🎲 Würfeln</button>
-          <button class="game-btn">🃏 Karten ziehen</button>
-        </section>
-        <section class="badges-section" id="badges-section">
-          <h2>Abzeichen</h2>
-          <div id="badges-list"></div>
-        </section>
+        <!-- Entferne die Bereiche für Partyspiele und Abzeichen hier! -->
       </main>
     </div>
   `;
