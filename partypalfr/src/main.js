@@ -1,6 +1,9 @@
 document.querySelector('.start-btn').addEventListener('click', function() {
-  confetti();
-  alert('Viel Spaß beim Abend!');
+  // Startseiten-Inhalte entfernen
+  document.querySelector('.main-content').innerHTML = '';
+  document.querySelector('.login-btn').style.display = 'none';
+  // Login-Overlay anzeigen
+  document.getElementById('login-overlay').style.display = 'flex';
 });
 
 // Overlay-Login öffnen/schließen
@@ -157,4 +160,6 @@ window.createDiscoLights = function() {
     discoBg.appendChild(light);
   }
 };
+
+document.querySelector('.login-btn').style.display = 'none';
 
