@@ -1,4 +1,7 @@
-import { createApp } from 'vue'
-import App from './App.vue'
 
-createApp(App).mount('#app')
+
+
+document.querySelector('.start-btn').addEventListener('click', function() {
+  alert('Viel Spaß beim Abend!');
+});
+

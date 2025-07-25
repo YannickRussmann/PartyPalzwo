@@ -67,3 +67,11 @@ body {
   background: linear-gradient(90deg, #ff5e62 0%, #ff9966 100%);
   transform: scale(1.05);
 }
+
+h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
