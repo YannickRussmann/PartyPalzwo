@@ -270,6 +270,83 @@ body {
   background: #bc6ff1;
 }
 
+/* Profil & Feed */
+.profile-section, .party-feed, .party-games, .badges-section {
+  background: rgba(34,34,34,0.85);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px #bc6ff144;
+  margin: 24px auto;
+  padding: 1.5rem 2rem;
+  max-width: 500px;
+  color: #fff;
+}
+
+.profile-section h2, .party-feed h2, .party-games h2, .badges-section h2 {
+  color: #00f2fe;
+  margin-bottom: 1rem;
+}
+
+#drink-input {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+}
+
+#add-drink-btn, #measure-btn, .game-btn {
+  background: linear-gradient(90deg, #00f2fe 0%, #bc6ff1 100%);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  margin: 0.5rem 0.2rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+#add-drink-btn:hover, #measure-btn:hover, .game-btn:hover {
+  background: #ff61a6;
+  transform: scale(1.05);
+}
+
+#drink-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+#drink-list li {
+  margin-bottom: 0.3rem;
+}
+
+#alcohol-status {
+  margin: 1rem 0;
+  font-weight: bold;
+  color: #ff61a6;
+}
+
+#photo-preview img {
+  max-width: 120px;
+  border-radius: 12px;
+  margin-top: 0.5rem;
+}
+
+#feed-list {
+  min-height: 40px;
+}
+
+.badge {
+  display: inline-block;
+  background: linear-gradient(90deg, #bc6ff1 0%, #ff61a6 100%);
+  color: #fff;
+  border-radius: 16px;
+  padding: 0.4rem 1rem;
+  margin: 0.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px #bc6ff188;
+}
+
 /* Responsive Design */
 @media (max-width: 600px) {
   .main-content {

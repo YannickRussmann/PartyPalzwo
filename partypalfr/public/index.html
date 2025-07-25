@@ -37,6 +37,42 @@
     </form>
   </div>
 
+  <!-- Haupt-App nach dem Login -->
+  <div id="party-app" style="display:none;">
+    <header class="header">
+      <button class="profile-btn" id="profile-btn">👤 Profil</button>
+      <button class="friends-btn" id="friends-btn">👥 Freunde</button>
+      <button class="ranking-btn" id="ranking-btn">👑 Ranking</button>
+      <button class="uber-btn" id="uber-btn">🚗 Uber rufen</button>
+    </header>
+    <main class="party-main">
+      <h1 class="welcome-title">Willkommen, <span id="user-name"></span>!</h1>
+      <section class="profile-section" id="profile-section">
+        <h2>Dein Profil</h2>
+        <input type="text" id="drink-input" placeholder="Neuen Drink eintragen">
+        <button id="add-drink-btn">Drink hinzufügen</button>
+        <ul id="drink-list"></ul>
+        <button id="measure-btn">Alkohol messen & Foto machen 📷</button>
+        <div id="alcohol-status"></div>
+        <div id="photo-preview"></div>
+      </section>
+      <section class="party-feed" id="party-feed">
+        <h2>Party-Feed</h2>
+        <div id="feed-list"></div>
+      </section>
+      <section class="party-games" id="party-games">
+        <h2>Partyspiele</h2>
+        <button class="game-btn">🍻 Trinkroulette</button>
+        <button class="game-btn">🎲 Würfeln</button>
+        <button class="game-btn">🃏 Karten ziehen</button>
+      </section>
+      <section class="badges-section" id="badges-section">
+        <h2>Abzeichen</h2>
+        <div id="badges-list"></div>
+      </section>
+    </main>
+  </div>
+
   <script src="../src/main.js"></script>
 </body>
 </html>

@@ -17,33 +17,120 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
   const username = this.username.value;
   const password = this.password.value;
   if (username === "party" && password === "1234") {
-    showWelcomePage(username);
+    showPartyApp(username);
     document.getElementById('login-overlay').style.display = 'none';
   } else {
     alert("Falscher Benutzername oder Passwort!");
   }
 });
 
-function showWelcomePage(username) {
+function showPartyApp(username) {
   document.body.innerHTML = `
     <div id="disco-bg"></div>
-    <div id="welcome-app">
+    <div id="party-app">
       <header class="header">
         <button class="profile-btn" id="profile-btn">👤 Profil</button>
+        <button class="friends-btn" id="friends-btn">👥 Freunde</button>
+        <button class="ranking-btn" id="ranking-btn">👑 Ranking</button>
+        <button class="uber-btn" id="uber-btn">🚗 Uber rufen</button>
       </header>
-      <main class="welcome-main">
-        <h1 class="welcome-title">Willkommen${username ? ', ' + username : ''}!</h1>
-        <div class="welcome-buttons">
-          <button class="feature-btn">🎵 Playlist</button>
-          <button class="feature-btn">🍹 Rezepte</button>
-          <button class="feature-btn">🗳️ Abstimmung</button>
-          <button class="feature-btn">📅 Event-Plan</button>
-        </div>
+      <main class="party-main">
+        <h1 class="welcome-title">Willkommen, <span id="user-name">${username}</span>!</h1>
+        <section class="profile-section" id="profile-section">
+          <h2>Dein Profil</h2>
+          <input type="text" id="drink-input" placeholder="Neuen Drink eintragen">
+          <button id="add-drink-btn">Drink hinzufügen</button>
+          <ul id="drink-list"></ul>
+          <button id="measure-btn">Alkohol messen & Foto machen 📷</button>
+          <div id="alcohol-status"></div>
+          <div id="photo-preview"></div>
+        </section>
+        <section class="party-feed" id="party-feed">
+          <h2>Party-Feed</h2>
+          <div id="feed-list"></div>
+        </section>
+        <section class="party-games" id="party-games">
+          <h2>Partyspiele</h2>
+          <button class="game-btn">🍻 Trinkroulette</button>
+          <button class="game-btn">🎲 Würfeln</button>
+          <button class="game-btn">🃏 Karten ziehen</button>
+        </section>
+        <section class="badges-section" id="badges-section">
+          <h2>Abzeichen</h2>
+          <div id="badges-list"></div>
+        </section>
       </main>
     </div>
   `;
-  // Optional: Discolichter neu erzeugen, falls du sie nutzt
   if (typeof createDiscoLights === "function") createDiscoLights();
+
+  // Drinks hinzufügen
+  const drinkList = [];
+  document.getElementById('add-drink-btn').onclick = function() {
+    const val = document.getElementById('drink-input').value.trim();
+    if (val) {
+      drinkList.push(val);
+      updateDrinkList();
+      document.getElementById('drink-input').value = '';
+    }
+  };
+  function updateDrinkList() {
+    document.getElementById('drink-list').innerHTML = drinkList.map(d => `<li>${d}</li>`).join('');
+  }
+
+  // Alkohol messen & Foto machen (Demo)
+  document.getElementById('measure-btn').onclick = function() {
+    const promille = (Math.random() * 2).toFixed(2);
+    document.getElementById('alcohol-status').innerText = `Dein Alkoholspiegel: ${promille}‰`;
+    if (promille > 1.2) {
+      alert('Trink jetzt ein Glas Wasser!');
+    }
+    // Foto machen (Demo: Platzhalterbild)
+    document.getElementById('photo-preview').innerHTML = `<img src="https://placekitten.com/120/120" alt="Dein Partyfoto">`;
+    // Feed-Eintrag
+    addFeed(`${username} hat einen Alkoholspiegel von ${promille}‰ gemessen und ein Foto gemacht!`);
+    // Abzeichen
+    if (promille > 1.5) addBadge('Party-Löwe 🦁');
+    if (promille > 2.0) addBadge('König der Nacht 👑');
+  };
+
+  // Feed
+  function addFeed(msg) {
+    const el = document.createElement('div');
+    el.textContent = msg;
+    document.getElementById('feed-list').prepend(el);
+  }
+
+  // Abzeichen
+  function addBadge(name) {
+    const badges = document.getElementById('badges-list');
+    if (![...badges.children].some(b => b.textContent === name)) {
+      const badge = document.createElement('span');
+      badge.className = 'badge';
+      badge.textContent = name;
+      badges.appendChild(badge);
+    }
+  }
+
+  // Uber-Knopf (Demo)
+  document.getElementById('uber-btn').onclick = function() {
+    window.open('https://m.uber.com/', '_blank');
+  };
+
+  // Freunde (Demo)
+  document.getElementById('friends-btn').onclick = function() {
+    alert('Freunde-Feature: Hier kannst du bald Freunde adden und ihren Status sehen!');
+  };
+
+  // Ranking (Demo)
+  document.getElementById('ranking-btn').onclick = function() {
+    alert('Ranking-Feature: Hier siehst du bald, wer der Party-König ist!');
+  };
+
+  // Profil (Demo)
+  document.getElementById('profile-btn').onclick = function() {
+    alert('Profil-Feature: Hier kannst du bald dein Profil bearbeiten!');
+  };
 }
 
 window.createDiscoLights = function() {
