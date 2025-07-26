@@ -131,20 +131,107 @@ function showPartyApp(username) {
     window.open('https://m.uber.com/', '_blank');
   };
 
-  // Freunde (Demo)
+  // Freunde (neue Seite)
   document.getElementById('friends-btn').onclick = function() {
-    alert('Freunde-Feature: Hier kannst du bald Freunde adden und ihren Status sehen!');
+    showFriendsPage();
   };
 
-  // Ranking (Demo)
-  document.getElementById('ranking-btn').onclick = function() {
-    alert('Ranking-Feature: Hier siehst du bald, wer der Party-König ist!');
-  };
+  function showFriendsPage() {
+    document.body.innerHTML = `
+      <div id="disco-bg"></div>
+      <div id="friends-page">
+        <nav class="party-banner">
+          <button class="banner-btn back-btn" id="back-btn">⬅️ Zurück</button>
+          <h2 style="margin-left:20px;">Deine Freunde</h2>
+        </nav>
+        <main class="friends-main">
+          <ul id="friends-list-page">
+            <li class="friend-item" data-name="Anna">
+              <span class="friend-name">Anna</span>
+              <span class="friend-status">🍹 1,2‰</span>
+              <span class="friend-party">bei Max' WG</span>
+            </li>
+            <li class="friend-item" data-name="Ben">
+              <span class="friend-name">Ben</span>
+              <span class="friend-status">🍺 0,8‰</span>
+              <span class="friend-party">im Club</span>
+            </li>
+            <li class="friend-item" data-name="Lena">
+              <span class="friend-name">Lena</span>
+              <span class="friend-status">🥂 0,5‰</span>
+              <span class="friend-party">auf Balkon</span>
+            </li>
+            <li class="friend-item" data-name="Nico">
+              <span class="friend-name">Nico</span>
+              <span class="friend-status">🚰 0,0‰</span>
+              <span class="friend-party">zu Hause bis zum 21. September</span>
+            </li>
+          </ul>
+        </main>
+      </div>
+    `;
 
-  // Profil (Demo)
-  document.getElementById('profile-btn').onclick = function() {
-    alert('Profil-Feature: Hier kannst du bald dein Profil bearbeiten!');
-  };
+    // Zurück zur Party-App
+    document.getElementById('back-btn').onclick = function() {
+      showPartyApp(document.getElementById('user-name')?.textContent || "Gast");
+    };
+
+    // Klick auf Freund öffnet Stats-Menü
+    document.querySelectorAll('.friend-item').forEach(item => {
+      item.onclick = function() {
+        showFriendStats(this.dataset.name);
+      };
+    });
+  }
+
+  function showFriendStats(name) {
+    document.body.innerHTML = `
+      <div id="disco-bg"></div>
+      <div id="friend-stats-page">
+        <nav class="party-banner">
+          <button class="banner-btn back-btn" id="back-friends-btn">⬅️ Zurück</button>
+          <h2 style="margin-left:20px;">Stats von ${name}</h2>
+        </nav>
+        <main class="stats-main">
+          <div class="stats-card">
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Letzter Pegel:</strong> ${getFriendPromille(name)}</p>
+            <p><strong>Party-Ort:</strong> ${getFriendLocation(name)}</p>
+            <p><strong>Lieblingsdrink:</strong> ${getFriendDrink(name)}</p>
+            <p><strong>Abzeichen:</strong> 🦁 👑 🍀</p>
+          </div>
+        </main>
+      </div>
+    `;
+
+    // Zurück zur Freunde-Seite
+    document.getElementById('back-friends-btn').onclick = function() {
+      showFriendsPage();
+    };
+  }
+
+  // Dummy-Datenfunktionen
+  function getFriendPromille(name) {
+    if (name === "Anna") return "1,2‰";
+    if (name === "Ben") return "0,8‰";
+    if (name === "Lena") return "0,5‰";
+    if (name === "Nico") return "0,0‰";
+    return "-";
+  }
+  function getFriendLocation(name) {
+    if (name === "Anna") return "bei Max' WG";
+    if (name === "Ben") return "im Club";
+    if (name === "Lena") return "auf Balkon";
+    if (name === "Nico") return "zu Hause bis zum 21. September";
+    return "-";
+  }
+  function getFriendDrink(name) {
+    if (name === "Anna") return "Aperol Spritz";
+    if (name === "Ben") return "Bier";
+    if (name === "Lena") return "Sekt";
+    if (name === "Nico") return "Wasser";
+    return "-";
+  }
 }
 
 // Discolichter (wie gehabt)
