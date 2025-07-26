@@ -36,7 +36,6 @@ function showPartyApp(username) {
       <div class="welcome-banner">
         <h1 class="welcome-title">
           Willkommen, <span id="user-name">${username}</span>!
-          <span class="icon">🎉</span><span class="icon">🍾</span><span class="icon">🥳</span>
         </h1>
       </div>
       <main class="party-main">

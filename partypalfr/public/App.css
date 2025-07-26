@@ -161,39 +161,34 @@ body {
 }
 
 .welcome-banner {
+  position: relative;
+  z-index: 1000;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center; /* geändert von flex-start zu center */
   margin-top: 30px;
   margin-bottom: 10px;
 }
 
 .welcome-title {
-  font-family: 'Pacifico', 'Montserrat', Arial, sans-serif;
-  font-size: 3.2rem;
+  position: relative;
+  z-index: 1001;
+  font-family: 'Orbitron', 'Montserrat', Arial, sans-serif;
+  font-size: 3rem;
   font-weight: 700;
-  background: linear-gradient(90deg, #00f2fe 10%, #bc6ff1 40%, #ff61a6 70%, #f9d423 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #00f2fe;
+  text-transform: uppercase;
   text-align: center;
-  letter-spacing: 2px;
-  /* Entferne den verschwommenen Schatten */
-  /* text-shadow: 0 2px 16px #bc6ff199, 0 0px 4px #00f2fe99; */
-  /* Füge einen leuchtenden Glow hinzu */
+  letter-spacing: 0.18em;
   text-shadow:
-    0 0 8px #fff,
-    0 0 24px #00f2fe,
-    0 0 32px #ff61a6,
-    0 0 48px #bc6ff1;
-  margin: 0;
+    0 0 8px #00f2fe,
+    0 0 16px #bc6ff1,
+    0 0 24px #fff;
+  margin: 0 auto;
   padding: 0 10px;
   animation: welcome-pop 1.2s cubic-bezier(.68,-0.55,.27,1.55);
-}
-@keyframes welcome-pop {
-  0% { transform: scale(0.7) rotate(-8deg);}
-  70% { transform: scale(1.1) rotate(6deg);}
-  100% { transform: scale(1) rotate(0);}
+  border-radius: 18px;
+  display: inline-block;
 }
 
 .welcome-title .icon {
