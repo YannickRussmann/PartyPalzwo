@@ -178,7 +178,14 @@ body {
   background-clip: text;
   text-align: center;
   letter-spacing: 2px;
-  text-shadow: 0 2px 16px #bc6ff199, 0 0px 4px #00f2fe99;
+  /* Entferne den verschwommenen Schatten */
+  /* text-shadow: 0 2px 16px #bc6ff199, 0 0px 4px #00f2fe99; */
+  /* Füge einen leuchtenden Glow hinzu */
+  text-shadow:
+    0 0 8px #fff,
+    0 0 24px #00f2fe,
+    0 0 32px #ff61a6,
+    0 0 48px #bc6ff1;
   margin: 0;
   padding: 0 10px;
   animation: welcome-pop 1.2s cubic-bezier(.68,-0.55,.27,1.55);
