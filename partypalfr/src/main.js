@@ -54,6 +54,26 @@ function showPartyApp(username) {
         </section>
         <!-- Entferne die Bereiche für Partyspiele und Abzeichen hier! -->
       </main>
+      <div class="friends-status friends-status-wide">
+        <h2>Wer feiert gerade?</h2>
+        <ul id="friends-list">
+          <li>
+            <span class="friend-name">Anna</span>
+            <span class="friend-status">🍹 1,2‰</span>
+            <span class="friend-party">bei Max' WG</span>
+          </li>
+          <li>
+            <span class="friend-name">Ben</span>
+            <span class="friend-status">🍺 0,8‰</span>
+            <span class="friend-party">im Club</span>
+          </li>
+          <li>
+            <span class="friend-name">Lena</span>
+            <span class="friend-status">🥂 0,5‰</span>
+            <span class="friend-party">auf Balkon</span>
+          </li>
+        </ul>
+      </div>
     </div>
   `;
   if (typeof createDiscoLights === "function") createDiscoLights();
